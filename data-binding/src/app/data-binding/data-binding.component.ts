@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { Forms, Module } from '@angular/core';
 
 @Component({
   selector: 'app-data-binding',
@@ -10,7 +11,12 @@ export class DataBindingComponent implements OnInit {
   url: string = 'http://loiane.com';
   cursoAngular: boolean = true;
   urlImagem = 'http://lorempixel.com/400/200/nature/';
-  valorAtual: string = "";
+  valorAtual: string = '';
+  valorSalvo: string = '';
+
+  isMouseOver: boolean = false;
+
+  nomeDoCurso: string = 'Angular';
 
   getValor(){
     return 1;
@@ -26,6 +32,16 @@ export class DataBindingComponent implements OnInit {
 
   onKeyUp(evento: KeyboardEvent){
     this.valorAtual = (<HTMLInputElement>evento.target).value;
+  }
+
+  salvarValor(valor){
+    this.valorSalvo = valor;
+  }
+
+  onMouseOverOUt(){
+
+    this.isMouseOver = !this.isMouseOver;
+
   }
 
   constructor() { }

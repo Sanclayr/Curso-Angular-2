@@ -1,6 +1,6 @@
-<section class="property-binding">
+<!-- <section class="property-binding">
   <article>
-    <!-- Interpolação  -->
+    
     <h3>Interpolation / Interpolação</h3>
     <p>String renderizada com interpolação {{ url }}</p>
     <p>Resultado de 1+1 é: {{ 1+1 }}</p>
@@ -10,11 +10,11 @@
 
   <article>
     <h3>Property Binding</h3>
-    <!-- Interpolação  -->
+    
     <img src="{{ urlImagem }}">
-    <!-- Property Binding  -->
+    
     <img [src]="urlImagem">
-    <!-- Property Binding -->
+    
     <img bind-src="urlImagem">
   </article>
 
@@ -27,7 +27,8 @@
         <option value="alert-warning">Alerta</option>
         <option value="alert-danger">Erro</option>
       </select>
-      <br><br>
+      <br>
+      <br>
 
       <div class="alert {{ classe.value }}" role="alert">
         Texto colorido conforme valor do combobox.
@@ -51,10 +52,31 @@
     <h3>Event Binding</h3>
     <div>
       <button (click)="botaoClicado()" class="btn btn-primary">Clique!</button>
-      <br><br>
+      <br>
+      <br>
 
-      <input type="text" (keyup)="onKeyUp($event)"/>
+      <input type="text" (keyup)="onKeyUp($event)" (keyup.enter)="salvarValor(campoInput.value)" (blur)="salvarValor(campoInput.value)"
+        #campoInput />
       <p>Valor atual: {{ valorAtual }} </p>
+      <p>Valor salvo: {{ valorSalvo }} </p>
+
+      <br>
+      <span (mouseover)="onMouseOverOUt()" (mouseout)="onMouseOverOUt()" [class.highlight]="isMouseOver">
+        Passe o mouse sobre
+      </span>
+
     </div>
+  </article>
+</section> -->
+
+
+<!-- <app-meu-form></app-meu-form> -->
+
+<section class="input-output-properties">
+  <article>
+    <h3>Input/Output Properties</h3>
+
+    <app-curso [nome]="nomeDoCurso"></app-curso>
+
   </article>
 </section>
