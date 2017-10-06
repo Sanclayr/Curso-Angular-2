@@ -1,0 +1,60 @@
+<section class="property-binding">
+  <article>
+    <!-- Interpolação  -->
+    <h3>Interpolation / Interpolação</h3>
+    <p>String renderizada com interpolação {{ url }}</p>
+    <p>Resultado de 1+1 é: {{ 1+1 }}</p>
+    <p>Resultado de 1+1 não é: {{ 1+1 + getValor() }}</p>
+    <p>{{ cursoAngular && getCurtirCurso() }}</p>
+  </article>
+
+  <article>
+    <h3>Property Binding</h3>
+    <!-- Interpolação  -->
+    <img src="{{ urlImagem }}">
+    <!-- Property Binding  -->
+    <img [src]="urlImagem">
+    <!-- Property Binding -->
+    <img bind-src="urlImagem">
+  </article>
+
+  <article>
+    <h3>Class & Style Binding</h3>
+    <div>Selecione uma classe:
+      <select #classe (change)="0">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Alerta</option>
+        <option value="alert-danger">Erro</option>
+      </select>
+      <br><br>
+
+      <div class="alert {{ classe.value }}" role="alert">
+        Texto colorido conforme valor do combobox.
+      </div>
+
+      <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">Sucesso...</div>
+      <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">Info...</div>
+      <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">Alerta...</div>
+      <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">Erro...</div>
+
+
+      <div class="alert alert-danger" role="alert" [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'">Esse Texto só aparece em caso de erro.</div>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="event-binding">
+  <article>
+    <h3>Event Binding</h3>
+    <div>
+      <button (click)="botaoClicado()" class="btn btn-primary">Clique!</button>
+      <br><br>
+
+      <input type="text" (keyup)="onKeyUp($event)"/>
+      <p>Valor atual: {{ valorAtual }} </p>
+    </div>
+  </article>
+</section>
