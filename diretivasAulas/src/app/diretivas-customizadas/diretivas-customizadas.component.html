@@ -8,3 +8,27 @@
 <p highlightMouse>
   texto com highligh quando passo o mouse.
 </p>
+
+<p [highlight]="'red'" [defaultColor]="'grey'">
+  texto com highligh com cores customizadas.
+</p>
+
+
+<div *ngIf="mostrarCursos">
+  Lista de cursos aqui.
+</div>
+<div *ngElse="mostrarCursos">
+  Não existem cursos para serem listados.
+</div>
+
+<br>
+
+<button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>
+
+<br>
+
+<template [ngElse]="mostrarCursos">
+  <div>
+    Não existem cursos a serem listados.
+  </div>
+</template>
