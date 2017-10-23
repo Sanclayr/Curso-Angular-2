@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,23 +18,27 @@ const appRoutes: Routes = [
     path: 'cursos',
     loadChildren: 'app/cursos/cursos.module#CursosModule',
     canActivate: [AuthGuard],
-    canActivateChild: [CursosGuard]
+    canActivateChild: [CursosGuard],
+    canLoad: [AuthGuard]
   },
   {
     path: 'alunos',
     loadChildren: 'app/alunos/alunos.module#AlunosModule',
-    canActivate: [AuthGuard]//,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard]//,
     //canActivateChild: [AlunosGuard]
   },
   //   {path:'cursos', component:CursosComponent},
   //   {path:'curso/:id', component:CursoDetalheComponent},
   { path: 'login', component: LoginComponent },
   //   {path:'naoEcontrado', component:CursoNaoEncontradoComponent},
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: PaginaNaoEncontradaComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes,{useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
