@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-template-form',
@@ -16,7 +16,10 @@ export class TemplateFormComponent implements OnInit {
 
   onSubmit(form) {
     this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
-      .map(res => res).subscribe(dados => console.log(dados));
+      .map(res => res).subscribe(dados => {
+        console.log(dados);
+        form.form.reset();
+      });
   }
 
   constructor(private http: Http) { }
@@ -37,7 +40,7 @@ export class TemplateFormComponent implements OnInit {
 
   consultaCEP(cep, form) {
     //console.log(cep);
-    cep = cep.replace(/\D/g,'');
+    cep = cep.replace(/\D/g, '');
     if (cep != "") {
       var validacep = /^[0-9]{8}$/;
 
@@ -72,20 +75,20 @@ export class TemplateFormComponent implements OnInit {
       endereco: {
         rua: dados.logradouro,
         cep: dados.cep,
-        complemento: dados.complemento ,
-        bairro: dados.bairro ,
-        cidade: dados.localidade ,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
         estado: dados.uf
       }
     });
   }
 
-  resetaDadosForm(formulario){
+  resetaDadosForm(formulario) {
     formulario.form.patchValue({
       endereco: {
         rua: null,
         cep: null,
-        complemento: null ,
+        complemento: null,
         bairro: null,
         cidade: null,
         estado: null
